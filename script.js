@@ -11,9 +11,9 @@ const camera = new THREE.PerspectiveCamera(
 );
 camera.position.z = 5;
 
-const renderer = new THREE.WebGLRenderer();
+const renderer = new THREE.WebGLRenderer({ antialias: true });
+renderer.setPixelRatio(window.devicePixelRatio);
 renderer.setSize(window.innerWidth, window.innerHeight);
-document.body.appendChild(renderer.domElement);
 
 const cube = new THREE.Mesh(
   new THREE.BoxGeometry(),
@@ -28,4 +28,5 @@ function animate() {
 }
 
 animate();
+
 
