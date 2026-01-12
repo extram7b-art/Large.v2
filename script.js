@@ -18,6 +18,20 @@ floor.rotation.x = -Math.PI / 2;
 scene.add(floor);
 
 // ===== WASD =====
+let yaw = 0;
+let pitch = 0;
+const sensitivity = 0.002;
+
+document.addEventListener("mousemove", e => {
+  if (document.pointerLockElement !== document.body) return;
+
+  yaw -= e.movementX * sensitivity;
+  pitch -= e.movementY * sensitivity;
+
+  pitch = Math.max(-Math.PI / 2, Math.min(Math.PI / 2, pitch));
+  camera.rotation.set(pitch, yaw, 0);
+});
+
 const keys = {};
 addEventListener("keydown", e => keys[e.key.toLowerCase()] = true);
 addEventListener("keyup", e => keys[e.key.toLowerCase()] = false);
@@ -50,10 +64,29 @@ function animate() {
 
   renderer.render(scene, camera);
 }
-animate();
+animate(const speed = 0.12;
+let moving = false;
+
+if (keys["w"]) { camera.translateZ(-speed); moving = true; }
+if (keys["s"]) { camera.translateZ(speed);  moving = true; }
+if (keys["a"]) { camera.translateX(-speed); moving = true; }
+if (keys["d"]) { camera.translateX(speed);  moving = true; }
+
+if (moving) {
+  bobTime += 0.15;
+  camera.position.y = 1.7 + Math.sin(bobTime) * 0.05;
+} else {
+  bobTime = 0;
+  camera.position.y += (1.7 - camera.position.y) * 0.1;
+}
+);
 
 addEventListener("resize", () => {
   camera.aspect = innerWidth / innerHeight;
   camera.updateProjectionMatrix();
   renderer.setSize(innerWidth, innerHeight);
+  document.body.addEventListener("click", () => {
+  document.body.requestPointerLock();
 });
+});
+
