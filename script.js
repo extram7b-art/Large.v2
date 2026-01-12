@@ -153,14 +153,25 @@ document.addEventListener("mousedown", () => {
     enemies.forEach((e, i) => {
       if (bullet.position.distanceTo(e.position) < 1.2) {
         e.userData.hp--;
-        hitSound();
-        enemyBlood(e.position);
-        scene.remove(bullet);
-        if (e.userData.hp <= 0) {
-          scene.remove(e);
-          enemies.splice(i, 1);
-        }
-      }
-    });
+        // ===== LOOP =====
+function animate() {
+  requestAnimationFrame(animate);
 
-    if (bullet.position.leng
+  const speed = 0.12;
+  if (keys["w"]) camera.translateZ(-speed);
+  if (keys["s"]) camera.translateZ(speed);
+  if (keys["a"]) camera.translateX(-speed);
+  if (keys["d"]) camera.translateX(speed);
+
+  enemies.forEach(enemyLogic);
+  renderer.render(scene, camera);
+}
+animate();
+
+// ===== RESIZE =====
+window.addEventListener("resize", () => {
+  camera.aspect = innerWidth / innerHeight;
+  camera.updateProjectionMatrix();
+  renderer.setSize(innerWidth, innerHeight);
+});
+leng
