@@ -1,0 +1,33 @@
+body {
+  margin: 0;
+  overflow: hidden;
+  background: black;
+  cursor: none;
+  font-family: Arial;
+}
+
+#crosshair {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 22px;
+}
+
+#ui {
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  color: white;
+  font-size: 18px;
+}
+
+#blood {
+  position: fixed;
+  inset: 0;
+  background: rgba(180,0,0,0.45);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.15s;
+}
