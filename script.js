@@ -1,3 +1,5 @@
+import * as THREE from "https://cdn.jsdelivr.net/npm/three@0.152.2/build/three.module.js";
+
 const scene = new THREE.Scene();
 scene.background = new THREE.Color(0x00ff00);
 
@@ -24,4 +26,6 @@ function animate() {
   cube.rotation.y += 0.01;
   renderer.render(scene, camera);
 }
+
 animate();
+
